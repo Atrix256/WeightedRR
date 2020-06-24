@@ -249,7 +249,7 @@ int main(int argc, char** argv)
             seq_OneMinusPi.push_back(FloatToWeightedItem(oneMinusPiValue, itemWeights));
 
             sqrt2Value = fract(sqrt2Value + c_sqrt2Fract);
-            seq_sqrt2.push_back(FloatToItem(sqrt2Value, c_numItems));
+            seq_sqrt2.push_back(FloatToWeightedItem(sqrt2Value, itemWeights));
         }
 
         // show items 
