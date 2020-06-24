@@ -3,9 +3,10 @@
 #include <random>
 #include <string>
 
+#define VERBOSE() false  // if true, shows more comparisons
 #define DETERMINISTIC() true
 static const int c_numItems = 10;
-static const int c_numRollsShow = 50;
+static const int c_numRollsShow = 80;
 static const int c_numRollsHistogram[] = { 10, 100, 1000, 10000, 100000, 1000000 };
 static const char c_baseCharacter = '0';
 
@@ -167,10 +168,12 @@ int main(int argc, char** argv)
         ShowSequence("Sequential", seq_Sequential, c_numRollsShow);
         ShowSequence("White Noise", seq_WhiteNoise, c_numRollsShow);
         ShowSequence("Golden Ratio", seq_GoldenRatio, c_numRollsShow);
-        ShowSequence("One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsShow);
         ShowSequence("Pi", seq_Pi, c_numRollsShow);
-        ShowSequence("One Minus Pi", seq_OneMinusPi, c_numRollsShow);
         ShowSequence("Sqrt2", seq_sqrt2, c_numRollsShow);
+#if VERBOSE()
+        ShowSequence("One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsShow);
+        ShowSequence("One Minus Pi", seq_OneMinusPi, c_numRollsShow);
+#endif
 
         // write out histograms to csvs at each step of c_numRollsHistogram
         for (size_t i = 0; i < sizeof(c_numRollsHistogram) / sizeof(c_numRollsHistogram[0]); ++i)
@@ -179,10 +182,12 @@ int main(int argc, char** argv)
             AddHistogram(csv, "Sequential", seq_Sequential, c_numRollsHistogram[i]);
             AddHistogram(csv, "White Noise", seq_WhiteNoise, c_numRollsHistogram[i]);
             AddHistogram(csv, "Golden Ratio", seq_GoldenRatio, c_numRollsHistogram[i]);
-            AddHistogram(csv, "One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsHistogram[i]);
             AddHistogram(csv, "Pi", seq_Pi, c_numRollsHistogram[i]);
-            AddHistogram(csv, "One Minus Pi", seq_OneMinusPi, c_numRollsHistogram[i]);
             AddHistogram(csv, "Sqrt2", seq_sqrt2, c_numRollsHistogram[i]);
+#if VERBOSE()
+            AddHistogram(csv, "One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsHistogram[i]);
+            AddHistogram(csv, "One Minus Pi", seq_OneMinusPi, c_numRollsHistogram[i]);
+#endif
             SaveCSV(csv, "unweighted", c_numRollsHistogram[i]);
         }
     }
@@ -252,10 +257,12 @@ int main(int argc, char** argv)
         ShowSequence("Sequential", seq_Sequential, c_numRollsShow);
         ShowSequence("White Noise", seq_WhiteNoise, c_numRollsShow);
         ShowSequence("Golden Ratio", seq_GoldenRatio, c_numRollsShow);
-        ShowSequence("One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsShow);
         ShowSequence("Pi", seq_Pi, c_numRollsShow);
-        ShowSequence("One Minus Pi", seq_OneMinusPi, c_numRollsShow);
         ShowSequence("Sqrt2", seq_sqrt2, c_numRollsShow);
+#if VERBOSE()
+        ShowSequence("One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsShow);
+        ShowSequence("One Minus Pi", seq_OneMinusPi, c_numRollsShow);
+#endif
 
         // write out histograms to csvs at each step of c_numRollsHistogram
         for (size_t i = 0; i < sizeof(c_numRollsHistogram) / sizeof(c_numRollsHistogram[0]); ++i)
@@ -264,10 +271,12 @@ int main(int argc, char** argv)
             AddHistogram(csv, "Sequential", seq_Sequential, c_numRollsHistogram[i]);
             AddHistogram(csv, "White Noise", seq_WhiteNoise, c_numRollsHistogram[i]);
             AddHistogram(csv, "Golden Ratio", seq_GoldenRatio, c_numRollsHistogram[i]);
-            AddHistogram(csv, "One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsHistogram[i]);
             AddHistogram(csv, "Pi", seq_Pi, c_numRollsHistogram[i]);
-            AddHistogram(csv, "One Minus Pi", seq_OneMinusPi, c_numRollsHistogram[i]);
             AddHistogram(csv, "Sqrt2", seq_sqrt2, c_numRollsHistogram[i]);
+#if VERBOSE()
+            AddHistogram(csv, "One Minus Golden Ratio", seq_OneMinusGoldenRatio, c_numRollsHistogram[i]);
+            AddHistogram(csv, "One Minus Pi", seq_OneMinusPi, c_numRollsHistogram[i]);
+#endif
             SaveCSV(csv, "weighted", c_numRollsHistogram[i]);
         }
     }
