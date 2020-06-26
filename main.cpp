@@ -381,7 +381,7 @@ int main(int argc, char** argv)
         float piValue = 0.0f;
         float oneMinusPiValue = 0.0f;
         float sqrt2Value = 0.0f;
-        Vec2 R2Value = { 0.0f, 0.0f };
+        Vec2 R2ValueAdditive = { 0.0f, 0.0f };
 
         float sequentialDelta = smallestWeight;
         float sequentialValue = sequentialDelta / 2.0f; // to help numerical problems from it being right on the edge.
@@ -417,8 +417,8 @@ int main(int argc, char** argv)
             Vec2 R2Value = R2(i);
             seq_AliasR2.push_back(SampleAliasTable(aliasTable, R2Value[0], R2Value[1]));
 
-            R2Value = R2Additive(R2Value);
-            seq_AliasR2Additive.push_back(SampleAliasTable(aliasTable, R2Value[0], R2Value[1]));
+            R2ValueAdditive = R2Additive(R2ValueAdditive);
+            seq_AliasR2Additive.push_back(SampleAliasTable(aliasTable, R2ValueAdditive[0], R2ValueAdditive[1]));
 
             seq_AliasGrSqrt2.push_back(SampleAliasTable(aliasTable, goldenRatioValue, sqrt2Value));
 
